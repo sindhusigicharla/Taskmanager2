@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-color: #d4e6eb;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -35,4 +41,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.container{
+  background-color: #ebeff0;
+  width: 80vw;
+  height: 90vh;
+  border-radius: 10px;
+  box-shadow: 9px 12px 20px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 9px 12px 20px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 9px 12px 20px 0px rgba(0,0,0,0.75);
+}
+
+.input-container{
+  width: 50vw;
+  margin-top: 20px;
+}
+
+
+.input{
+  width: 350px;
+  height: 25px;
+  border-radius: 5px;
+  border: rgb(211, 226, 235);
+}
+
+.toggle-container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  margin-right: 20px;
+
+}
+
+
+.toggle{
+  font-size: 20px;
 }
