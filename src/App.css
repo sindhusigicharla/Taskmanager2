@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #d4e6eb;
+  
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -70,13 +70,70 @@
 .toggle-container{
   width: 100%;
   display: flex;
-  justify-content: end;
-  margin-top: 20px;
-  margin-right: 20px;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 20px 0;
+  box-sizing: border-box;
 
 }
 
 
-.toggle{
-  font-size: 20px;
+.toggle-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.toggle-icon{
+  font-size: 3rem;
+}
+
+.light-bg{
+    background-color: #ebeff0;
+}
+
+.dark-bg{
+  background-color: rgb(18, 24, 41);
+}
+
+.btn{
+  width: 50px;
+  height: 28px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-add{
+  background-color: rgb(123, 222, 159); 
+}
+
+.btn-delete{
+  background-color: rgb(235, 159, 159);
+}
+
+
+.task-list{
+  background-color: aliceblue;
+  margin: 20px;
+  height: 65vh;
+  border-radius: 20px;
+}
+
+
+.task-item{
+  display: flex;
+  margin: 20px;
+  align-items: center;
+}
+
+.task{
+  margin-left: 20px;
+  margin-right: 50px;
 }

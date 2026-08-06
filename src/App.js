@@ -3,12 +3,16 @@ import './App.css';
 import Input from './Input';
 import { useState } from 'react';
 import Toggle from './Toggle';
+import TaskList from './TaskList';
 
 function App() {
   const [tasks, setTasks] = useState([
     {id:1, description: "Task 1", status:true},
     {id:2, description: "Task 1", status:true},
   ])
+
+
+  const [isLightMode, setIsLightMode] = useState(false);
 
   function addTask(task){
     const newTask = {
@@ -17,17 +21,25 @@ function App() {
       status: true,
     }
 
+
     setTasks([...tasks, newTask])
     
   }
 
+  function deleteTask(id){
+
+    const newTasks = tasks.filter(task=>task.id!==id);
+    setTasks(newTasks);
+
+  }
+
   
   return (
-    <div className="App">
+    <div className={`App ${isLightMode?'light-bg':'dark-bg'}`}>
       <div className='container'>
-          <Toggle/>
+          <Toggle isLightMode={isLightMode} setIsLightMode={setIsLightMode}/>
           <Input addTask={addTask}/>
-
+          <TaskList tasks = {tasks} deleteTask={deleteTask}/>
       </div>
     </div>
   );
@@ -41,3 +53,8 @@ export default App;
 // Steps to Install MUI
 // 1. Run "npm install @mui/icons-material"
 // 2. Run "npm install @mui/icons-material @mui/material @emotion/styled @emotion/react"
+
+
+
+//1. How to apply CSS conditionally
+//2. State uplift
