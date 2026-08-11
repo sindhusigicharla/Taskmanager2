@@ -1,10 +1,14 @@
 import TaskItem from "./TaskItem";
 
 function TaskList(props){
-    const {tasks, deleteTask} = props;
+    const {tasks, deleteTask, updateTask} = props;
+    if(tasks.length==0){
+        return <h1>No tasks are available</h1>
+    }
     return(
         <div className="task-list">
-            {tasks.map((task)=>  <TaskItem id={task.id} taskName={task.description} status ={task.status} deleteTask={deleteTask}/>
+            
+            {tasks.map((task)=>  <TaskItem id={task.id} taskName={task.description} status ={task.status} deleteTask={deleteTask} updateTask={updateTask}/>
             )}
         </div>
     )
