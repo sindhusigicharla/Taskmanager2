@@ -1,4 +1,15 @@
+import { memo, useContext } from 'react';
+import { TasksContext } from './App';
+
 function Button(props){
+
+
+    const buttonContext = useContext(TasksContext)
+
+    console.log(buttonContext, 'buttonContext')
+
+
+
 
     const {text, type, operation} = props
     
@@ -10,6 +21,3 @@ function Button(props){
 }
 
 export default Button;
-
-// 1. Text
-// 2. type - add, delete

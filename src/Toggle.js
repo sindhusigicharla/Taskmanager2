@@ -1,12 +1,29 @@
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ThemeContext } from './App';
+import Hello from './Hello';
 
-function Toggle(props){
+
+// This customhook provides the isLightMode and setIsLightMode from ThemeContext
+function useThemeContext(){
+    return useContext(ThemeContext);
+    //
+    //
+    ///
+    ///
+}
+
+function Toggle(){
+
+
+    const {isLightMode, setIsLightMode} = useThemeContext();
+
+  
 
     
 
-    const {isLightMode, setIsLightMode} = props;
+    // const {isLightMode, setIsLightMode} = props;
     return(
         <div className='toggle-container'>
             <button className='toggle-button' onClick={()=>{

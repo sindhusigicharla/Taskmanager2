@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import TaskItem from "./TaskItem";
+import { TasksContext } from "./App";
 
 function TaskList(props){
+
     const {tasks, deleteTask, updateTask} = props;
+
+    useContext(TasksContext)
     if(tasks.length==0){
         return <h1>No tasks are available</h1>
     }

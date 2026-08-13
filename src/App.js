@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Input from './Input';
-import { useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import Toggle from './Toggle';
 import TaskList from './TaskList';
+import React from 'react';
+
+export const ThemeContext = createContext();
+export const TasksContext = createContext();
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -12,16 +16,7 @@ function App() {
 
   const [isLightMode, setIsLightMode] = useState(localStorage.getItem('isLightMode')==='true'? true:false);
 
-  // Hw
-  // From the local storage the data will be retrieved as json - {"theme": "true"} -> {theme: true}
-
-  // CRUD
-  // 1. Create or add
-  // 2. Read or get
-  // 3. Update -> Delete and Add again
-  // 4. Delete or remove
-
-  
+ 
  
 
   function addTask(task){
@@ -58,14 +53,26 @@ function App() {
       setTasks(newTasks);
   }
 
+  const count = {count: 10}
+
+  const buttonText = {
+    text:'Add'
+  }
 
   
   return (
     <div className={`App ${isLightMode?'light-bg':'dark-bg'}`}>
       <div className='container'>
-          <Toggle isLightMode={isLightMode} setIsLightMode={setIsLightMode}/>
+          <ThemeContext.Provider value={{isLightMode, setIsLightMode}}>
+                <Toggle/>
+          </ThemeContext.Provider>
+
           <Input addTask={addTask}/>
-          <TaskList tasks = {tasks} deleteTask={deleteTask} updateTask={updateTask}/>
+
+          <TasksContext.Provider value={buttonText}>
+                <TaskList tasks = {tasks} deleteTask={deleteTask} updateTask={updateTask}/>
+          </TasksContext.Provider>
+   
       </div>
     </div>
   );
@@ -97,3 +104,4 @@ export default App;
 
 
 // In next class we will cover, context api and memoization
+
