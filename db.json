@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    {
+      "id": "KLe93LCh65g",
+      "description": "task 1",
+      "status": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
