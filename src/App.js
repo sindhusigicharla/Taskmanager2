@@ -4,7 +4,7 @@ import Input from "./Input";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import Toggle from "./Toggle";
 import TaskList from "./TaskList";
-import React from "react";
+import axios from "axios";
 
 export const ThemeContext = createContext();
 export const TasksContext = createContext();
@@ -23,11 +23,12 @@ function App() {
   }, []);
 
   async function getTasks() {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setTasks(data);
-    } catch (error) {
+
+    try{
+      const response = await axios.get(url);
+      console.log(response);
+      setTasks(response.data);
+    }catch(error){
       console.log(error);
     }
   }
@@ -40,14 +41,7 @@ function App() {
     };
 
     try {
-      const response = await fetch(url, {
-        method: "POST",
-
-        body: JSON.stringify(newTask),
-      });
-      const data = await response.json();
-
-      console.log(data);
+      await axios.post(url, newTask);
     } catch (error) {
       console.log(error);
     } finally {
@@ -56,8 +50,7 @@ function App() {
   }
 
   async function deleteTask(id) {
-    // const newTasks = tasks.filter(task=>task.id!==id);
-    // setTasks(newTasks);
+
 
     try {
       const reponse = await fetch(`${url}/${id}`, {
@@ -137,3 +130,12 @@ export default App;
 // 2. Centraized storage system, eg: Redux, redux toolkit
 
 // In next class we will cover, context api and memoization
+
+// what is axios?
+// axios is a JavaScript library to make the HTTP api requests
+
+// why do we need axios if we have fetch?
+//1. Automatic JSON handling - serialization and deserialization
+//2.  easier error handling
+//3. Interceptors
+//4. COnfigurations of params, headers etc.
